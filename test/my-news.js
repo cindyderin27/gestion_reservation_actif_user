@@ -137,24 +137,12 @@ $.ajax({
   //console.log(data.data) ;
   
   let tab =
-  `<tr>
-      <th>numero</th>
-  <th>libelle</th>
-      <th>prix</th>
-      <th>quantite</th>
-      <th>disponibilité</th>
-      <th>etat</th>
-      <th>description</th>
-      <th>garantie</th>
-      <th>Options</th>
-      <th>date Achat</th>
-      <th>categorie</th>
-  </tr>`;
+  ``;
 
 // Loop to access all rows
  for (let r of data.data) {
   tab += `<tr>
-  <td>${r.num} </td>      
+  <td  scope="row" >${r.num} </td>      
 <td>${r.libelle} </td>
 <td>${r.prix}</td>
 <td>${r.quantite} </td>
@@ -192,6 +180,66 @@ $.ajax({
 
 // Setting innerHTML as tab variable
 document.getElementById("listeactif").innerHTML = tab;
+  
+});
+
+
+}
+
+// fonction pour la liste des demandes
+function listedemande() {
+
+  // liste des utilisateurs
+
+
+$.ajax({
+  url: url+ "/demande/all"  
+}).then(function(data) {
+
+  //console.log(data.data) ;
+  
+  let tab =
+  ``;
+
+// Loop to access all rows
+ for (let r of data.data) {
+  tab += `<tr>
+  <td  scope="row" >${r.num_demande} </td>      
+<td>${r.quantite} </td>
+<td>${r.proprietaire}</td>
+<td>${r.libelleactif} </td>
+<td>${r.id_responsable} </td>
+<td>${r.dateDemande} </td>
+<td>${r.heureDemande} </td>
+
+
+
+
+     
+  <td><ul class="list-inline m-0">
+                    
+  <li class="list-inline-item">
+    <button class="btn btn-success btn-sm " type="button" data-toggle="modal" data-target="#editerStock" data-placement="top" title="Edit"
+      style="margin-bottom: 10px; vertical-align: baseline;"><i class="bi bi-pencil-square"></i>Editer</button>
+  </li>
+  <li class="list-inline-item">
+    <button class="btn btn-danger btn-sm " type="button" data-toggle="tooltip" data-placement="top"
+      title="Delete"><i class="bi bi-trash"></i>Supprimer</button>
+  </li>
+  <li class="list-inline-item" data-toggle="modal" data-target="#plusinfo"  >
+    <button type="button" class="btn btn-warning btn-sm">Voire plus</button>
+  </li>
+</ul></td> 
+
+
+
+
+
+</tr>`;
+}
+
+// Setting innerHTML as tab variable
+document.getElementById("listedemande").innerHTML = tab;
   
 });
 
