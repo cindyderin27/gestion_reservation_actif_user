@@ -26,9 +26,11 @@
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
+  <script src="test/js.js"></script>
+
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-
+  <link href="assets/css/custum.css" rel="stylesheet">
   <!-- =======================================================
   * Template Name: NiceAdmin - v2.5.0
   * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
@@ -279,7 +281,7 @@
           <li class="nav-item">
             <a class="nav-link collapsed" href="pages-login.html">
               <i class="bi bi-record-circle"></i>
-             <span>Inforamations Personnelles</span>
+             <span>Informations Personnelles</span>
             </a>
           </li><!-- End Login Page Nav -->
         </ul>
@@ -328,65 +330,104 @@
                   <form class="row g-3">
                     <div class="col-md-6">
                       <div class="form-floating mb-3">
-                        <select class="form-select" id="floatingSelect" aria-label="State">
-                          <option selected>Projecteur</option>
-                          <option selected>ordinateur</option>
-                          <option selected>camera</option>
-                          <option selected>box-Wifi</option>
-                          <option selected>imprimante</option>
+                        <select class="form-select" id="idactif" aria-label="State">
+                          <option value="21" selected>Video projecteur</option>
+                          <option value="22">laboratoire informatique</option>
+                          <option value="23">laboratoire medecine</option>
+                          <option value="21">laboratoire physique</option>
+                          <option value="22">ordinateur</option>
+                          <option value="23">camera</option>
+                          <option value="21">box-Wifi</option>
+                          <option value="22">imprimante</option>
                         </select>
                         <label for="floatingSelect">Materiel</label>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-floating">
-                        <input type="number" class="form-control" id="floatingZip" placeholder="Zip">
+                        <input type="number" class="form-control" id="quantite" placeholder="Zip">
                         <label for="floatingZip">Quantité</label>
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="form-floating mb-3">
-                        <select class="form-select" id="floatingSelect" aria-label="State">
-                          <option selected>Soutenance</option>
-                          <option selected>Reuinion</option>
-                          <option selected>Cours</option>
-                          <option selected>Séminaire</option>
-                          <option selected>Autres</option>
+                        <select class="form-select" id="occasion1" aria-label="State">
+                          <option value="Cours" selected>Cours</option>
+                          <option value="Soutenance">Soutenance</option>
+                          <option value="Reunion">Reuinion</option>
+                         
+                          <option value="Seminaire">Séminaire</option>
+                          
                         </select>
+                       
                         <label for="floatingSelect">Pour quelle Occassion ?</label>
                       </div>
                     </div>
+
+                    <div class="col-md-12">
+                      <div class="row mb-3">
+                        <label for="inputAutre" class="col-sm-2 col-form-label">Autre motif</label>
+                        <div class="col-sm-10">
+                          <textarea class="form-control" id="occasion2" style="height: 60px"></textarea>
+                        </div>
+                      </div>
+                   </div>
+
                    <div class="col-md-12">
                       <div class="row mb-3">
                         <label for="inputPassword" class="col-sm-2 col-form-label">Description</label>
                         <div class="col-sm-10">
-                          <textarea class="form-control" style="height: 100px"></textarea>
+                          <textarea class="form-control" id="description" style="height: 100px"></textarea>
                         </div>
                       </div>
                    </div>
                     <div class="col-md-12">
                       <div class="row mb-3">
-                        <label for="inputDate" class="col-sm-2 col-form-label">Date de Retrait</label>
+                        <label for="inputDate"  class="col-sm-2 col-form-label">Date de Retrait</label>
                         <div class="col-sm-10">
-                          <input type="date" class="form-control">
-                        </div>
+                          
+                                <input type="datetime-local" id="dateretrait"
+                                   name="meeting-time" value="2018-06-12T19:30"
+                                  min="2018-06-07T00:00" max="2018-06-14T00:00">
+                                            </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="row mb-3">
+                        <label for="inputDate"  class="col-sm-2 col-form-label">Date de Retour</label>
+                        <div class="col-sm-10">
+                          
+                                <input type="datetime-local" id="dateretour"
+                                   name="meeting-time" value="2018-06-12T19:30"
+                                  min="2018-06-07T00:00" max="2018-06-14T00:00">
+                                            </div>
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="form-floating mb-3">
-                        <select class="form-select" id="floatingSelect" aria-label="State">
-                          <option selected>Soutenance</option>
-                          <option selected>Reuinion</option>
-                          <option selected>Cours</option>
-                          <option selected>Séminaire</option>
-                          <option selected>Autres</option>
+                        <select class="form-select" id="responsable" aria-label="State">
+                          <option Value="IUC18">Jean </option>
+                          <option Value="IUC19">Pierre</option>
+                          <option Value="IUC20">Yves</option>
+                          <option Value="IUC21">Marie</option>
+                          
                         </select>
                         <label for="floatingSelect">Choisir le Responsable</label>
                       </div>
                     </div>
+
+                    <div class="col-md-12">
+                      <div class="row mb-3">
+                        <label for="inputAutre" class="col-sm-2 col-form-label">Autre Responsable</label>
+                        <div class="col-sm-10">
+                          <textarea class="form-control" id="responsable2" style="height: 60px"></textarea>
+                        </div>
+                      </div>
+                   </div>
+
                     <div class="text-center">
                       <div class="d-grid gap-2 mt-3">
-                        <button class="btn btn-primary" type="button">Submit</button>
+                        <button class="btn btn-primary" type="button" id="soumettre-demande">Soumettre</button>
                       </div>
                     </div>
                   </form><!-- End floating Labels Form -->
@@ -423,7 +464,8 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-
+  <script src="assets/js/jquery.livequery.js"></script>
+  <script src="test/my-news.js"></script>
 </body>
 
 </html>

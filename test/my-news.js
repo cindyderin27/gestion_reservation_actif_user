@@ -186,7 +186,10 @@ document.getElementById("listeactif").innerHTML = tab;
 
 }
 
-// fonction pour la liste des demandes
+
+// partie gestion de demandes 
+
+// fonction pour la liste des demandes pour responsable et gestionnaire 
 function listedemande() {
 
   // liste des utilisateurs
@@ -245,3 +248,133 @@ document.getElementById("listedemande").innerHTML = tab;
 
 
 }
+
+// fonction pour la liste des demandes pour responsable et gestionnaire 
+function listedemande_user() {
+
+  // liste des utilisateurs
+
+
+$.ajax({
+  url: url+ "/demande/all"  
+}).then(function(data) {
+
+  console.log(data.data) ;
+  
+  let tab =
+  ``;
+
+// Loop to access all rows
+ for (let r of data.data) {
+  tab += `<tr>
+  <td  scope="row" >${r.num_demande} </td>      
+<td>${r.quantite_demande} </td>
+<td>${r.proprietaire}</td>
+<td>${r.libelle} </td>
+<td>${r.description_demande} </td>
+<td>${r.id_responsable} </td>
+<td>${r.dateDemande} </td>
+<td>${r.dateRetour} </td>
+
+
+
+
+     
+  <td><ul class="list-inline m-0">
+  
+  <li class="list-inline-item">
+    <button class="btn btn-success btn-sm " type="button" data-toggle="modal" data-target="#editerStock" data-placement="top" title="Edit"
+      style="margin-bottom: 10px; vertical-align: baseline;"><i class="bi bi-pencil-square"></i>Confimer</button>
+  </li>
+  
+  <li class="list-inline-item">
+    <button class="btn btn-success btn-sm " type="button" data-toggle="modal" data-target="#editerStock" data-placement="top" title="Edit"
+      style="margin-bottom: 10px; vertical-align: baseline;"><i class="bi bi-pencil-square"></i>Editer</button>
+  </li>
+  <li class="list-inline-item">
+    <button class="btn btn-danger btn-sm " type="button" data-toggle="tooltip" data-placement="top"
+      title="Delete"><i class="bi bi-trash"></i>Supprimer</button>
+  </li>
+  <li class="list-inline-item" data-toggle="modal" data-target="#plusinfo"  >
+    <button type="button" class="btn btn-warning btn-sm">Voire plus</button>
+  </li>
+</ul></td> 
+
+
+
+
+
+</tr>`;
+}
+
+// Setting innerHTML as tab variable
+document.getElementById("listedemande").innerHTML = tab;
+  
+});
+
+
+}
+
+ // creer un materiel
+ $('#soumettre-demande').livequery('click', function(e){
+
+  e.preventDefault() ; 
+
+  let id_actif = $('#idactif').val() ;
+  let quantite = $('#quantite').val() ;
+  let libelle = $('#occasion1').val()  ?  $('#occasion1').val()  :  $('#occasion2').val()  ;
+ let id_user = $('#user').val()  || "IUC14E";
+ let numero = $('#numero').val()  || "d-00-"+Math.floor(Math.random()*100) ;
+  let description = $('#description').val() ;
+  let proprietaire = $('#user').val()  || "IUC15E";
+  
+  let dateretrait = $('#dateretrait').val() ;
+  let dateretour = $('#dateretour').val() ;
+
+  let responsable = $('#responsable').val() ? $('#responsable').val()  :  $('#responsable').val();
+ 
+ responsable =  responsable ? responsable : "IUCjean" ;
+
+
+    var data  = {
+      id_actif: id_actif, 
+      libelle: libelle, 
+      quantite: quantite ,
+      numero : numero ,
+      description : description ,
+      datedemande : dateretrait ,
+      dateretour : dateretour ,
+      id_responsable : responsable ,
+      id_user: id_user ,
+      proprietaire : proprietaire
+
+    };
+
+    console.log(data) ;
+  
+// creer une demande
+    $.post("http://localhost:5000/demande/new", data, function(puerto){
+
+    //console.log(puerto) ;
+  //  console.log(" produit ajoute avec succes ") ;
+   }, 'json');
+
+   
+          
+    /*const settings = {
+                  "async": true,
+                  "crossDomain": true,
+                  "url": url + "/article/new",
+                  "method": "POST",
+                  
+                  "processData": false,
+                  "data": data2
+                };
+                
+                $.ajax(settings).done(function (response) {
+                  console.log(response);
+                });
+                */
+
+  return false;
+});

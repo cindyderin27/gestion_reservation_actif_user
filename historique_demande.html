@@ -30,7 +30,7 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-
+  <link href="assets/css/custum.css" rel="stylesheet">
   <!-- =======================================================
   * Template Name: NiceAdmin - v2.5.0
   * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
@@ -332,9 +332,9 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Liste des Demandes 
-               
-                <button type="" class="btn btn-outline-primary" id=""  data-toggle="modal" data-target="#ajouterdemande"><i class="bi bi-plus-circle"></i> Ajouter</button>
-            
+               <a href="form_demande_materiel.html">
+                <button type="" class="btn btn-outline-primary" id=""  ><i class="bi bi-plus-circle"></i> Ajouter</button>
+              </a>
               </h5>
               <p></p>
 
@@ -347,6 +347,7 @@
                     <th scope="col">quantite</th>
                     <th scope="col">utilisateur</th>
                     <th scope="col">actif</th>
+                    <th scope="col">description</th>
                     <th scope="col">reponsable</th>
                     <th scope="col">date</th>
                     <th scope="col">heure</th>
@@ -388,7 +389,7 @@
   <script src="assets/js/jquery.livequery.js"></script>
   <script src="test/my-news.js"></script>
     <script>
-      listedemande() ;
+      listedemande_user() ;
     </script>
 </body>
 
