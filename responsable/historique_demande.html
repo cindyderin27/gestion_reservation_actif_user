@@ -30,7 +30,7 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-
+  <link href="assets/css/custum.css" rel="stylesheet">
   <!-- =======================================================
   * Template Name: NiceAdmin - v2.5.0
   * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
@@ -332,9 +332,9 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Liste des Demandes 
-               
-                <button type="" class="btn btn-outline-primary" id=""  data-toggle="modal" data-target="#ajouterdemande"><i class="bi bi-plus-circle"></i> Ajouter</button>
-            
+               <a href="form_demande_materiel.html">
+                <button type="" class="btn btn-outline-primary" id=""  ><i class="bi bi-plus-circle"></i> Ajouter</button>
+              </a>
               </h5>
               <p></p>
 
@@ -347,9 +347,10 @@
                     <th scope="col">quantite</th>
                     <th scope="col">utilisateur</th>
                     <th scope="col">actif</th>
+                    <th scope="col">description</th>
                     <th scope="col">reponsable</th>
-                    <th scope="col">date</th>
-                    <th scope="col">heure</th>
+                    <th scope="col">date Retrait </th>
+                    <th scope="col">Date retour </th>
                     <th scope="col">option</th>
                    </tr>
                 </thead>
@@ -369,6 +370,37 @@
         </div>
       </div>
     </section>
+
+<!-- Modals -->
+
+<div class="modal fade show" id="motifrejet" tabindex="-1" role="dialog" aria-labelledby="motifrejet"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Booking Asset</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="row mb-3">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Motif du rejet</label>
+        <div class="col-sm-10">
+          <textarea class="form-control" style="height: 100px"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+      <button type="button" class="btn btn-primary">Save</button>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
   </main><!-- End #main -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
