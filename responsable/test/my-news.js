@@ -247,7 +247,9 @@ $.ajax({
 
   </li>
   <li class="list-inline-item">
-  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#motifrejet"><i class="bi bi-x-lg"></i></button>
+  <button type="button" class="btn btn-danger"
+  onClick = "rejeterdemande(${r.id_demande})"
+  data-toggle="modal" data-target="#motifrejet"><i class="bi bi-x-lg"></i></button>
   </div>
   </li>
 
@@ -509,6 +511,24 @@ function confirmerdemande (id) {
 //  console.log(" produit ajoute avec succes ") ;
  }, 'json');
 }
+
+
+// fonction pour rejeter une demande
+function rejeterdemande (id) {
+  var data  = {
+  id: id
+
+  };
+
+  // methode 1
+// creer un materiel
+  $.post(url +"/demande/rejeter", data , function(puerto){
+
+  //console.log(puerto) ;
+//  console.log(" produit ajoute avec succes ") ;
+ }, 'json');
+}
+
 
 // confirmation demande
 $('#confirm-demande').livequery('click', function(e){
