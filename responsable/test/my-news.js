@@ -206,7 +206,24 @@ $.ajax({
 
 // Loop to access all rows
  for (let r of data.data) {
-  tab += `<tr>
+
+  tab += `<tr ` ;
+    
+  if( r.statut_confirmation== 1 ) {
+    tab += ` class="alert alert-primary" role="alert"  >`;
+  } else if( r.statut_validation== 1 ){
+    tab += ` class="alert alert-warning" role="alert"  >`;
+  } else if( r.statut_rejet== 1 ){
+    tab += ` class="alert alert-dark" role="alert"  >`;
+  } else
+  {
+    tab += `>`;
+  }
+
+
+
+    tab += `
+  
   <td  scope="row" >${r.num_demande} </td>      
 <td>${r.quantite_demande} </td>
 <td>${r.proprietaire}</td>

@@ -266,7 +266,22 @@ $.ajax({
 
 // Loop to access all rows
  for (let r of data.data) {
-  tab += `<tr>
+  tab += `<tr ` ;
+    
+  if( r.statut_confirmation== 1 ) {
+    tab += ` class="alert alert-primary" role="alert"  >`;
+  } else if( r.statut_validation== 1 ){
+    tab += ` class="alert alert-warning" role="alert"  >`;
+  } else if( r.statut_rejet== 1 ){
+    tab += ` class="alert alert-dark" role="alert"  >`;
+  } else
+  {
+    tab += `>`;
+  }
+
+
+
+    tab += `
   <td  scope="row" >${r.num_demande} </td>      
 <td>${r.quantite_demande} </td>
 <td>${r.proprietaire}</td>
@@ -293,7 +308,7 @@ $.ajax({
   </li>
   <li class="list-inline-item">
     <button class="btn btn-danger btn-sm " type="button" data-toggle="tooltip" data-placement="top"
-      title="Delete"><i class="bi bi-trash"></i>Supprimer</button>
+      title="Delete">Supprimer</button>
   </li>
   <li class="list-inline-item" data-toggle="modal" data-target="#plusinfo"  >
     <button type="button" class="btn btn-warning btn-sm">Voire plus</button>
